@@ -1,0 +1,23 @@
+.basic-layout {
+    min-height: 100vh;
+    background-image: url(https://ecommerce-textil.s3.eu-west-3.amazonaws.com/static/pexels-pixabay-326347.jpg);
+    background-size: cover;
+    background-position: center;
+    
+
+
+    .content {
+        margin-top: 14px;
+        background-color: $background-grey-light;
+        height: calc(100vh - 130px);
+        box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+        -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+        -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+        overflow-y: scroll;
+        opacity: 0.999;
+
+        &::-webkit-scrollbar{
+            display: none;
+        }
+    }
+}

@@ -1,0 +1,50 @@
+.list-products {
+    padding: 20px;
+    position: relative;
+    z-index: 0;
+    
+    .info_novedades{
+        text-align: center;
+        width: -webkit-fill-available;
+        p {
+            text-decoration: overline s;
+            opacity: 0.5;
+    
+        }
+    }
+
+    .content {
+        padding-top: 25px;
+        height: auto;
+        /* left: 55%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        position: absolute; */
+        
+    }
+
+    .header {
+        padding-top: 5px; //MIRARASDASDASD
+        box-shadow: 0 0px 0px 0px;
+
+        &:hover {
+            opacity: 0.9;
+        }
+        
+    }
+
+    
+    .column {
+        padding: 5px;
+       
+    }
+
+    img:hover{
+        opacity: 0.6;
+        
+       }
+
+   
+
+}
+

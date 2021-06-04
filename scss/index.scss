@@ -1,0 +1,22 @@
+//Colores definidos
+@import "./colors.scss";
+
+//Layouts
+@import "../layouts/BasicLayout/BasicLayout.scss";
+
+//Pages
+@import "../pages/index.scss";
+@import "../pages/account.scss";
+
+//Components
+@import "../components/Header/Header.scss";
+@import "../components/Header/TopBar/TopBar.scss";
+@import "../components/Header/Menu/Menu.scss";
+@import "../components/Modal/BasicModal/BasicModal.scss";
+@import "../components/Auth/LoginForm/LoginForm.scss";
+@import "../components/Account/ChangeNameForm/ChangeNameForm.scss";
+@import "../components/Account/ChangeEmailForm/ChangeEmailForm.scss";
+@import "../components/Account/ChangePasswordForm/ChangePasswordForm.scss";
+@import "../components/Account/AddressForm/AddressForm.scss";
+@import "../components/Account/ListAddress/ListAddress.scss";
+@import "../components/ListProducts/ListProducts.scss";
