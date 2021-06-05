@@ -9,7 +9,7 @@ import { getMeApi } from "../../../api/user";
 import { getCategoriesApi, getSubCategoriesApi } from "../../../api/categories";
 
 
-export default function MenuWeb({categories, subCategories}) {
+export default function MenuWeb({ categories, subCategories }) {
     /* const [categories, setCategories] = useState([]);
     const [subCategories, setSubCategories] = useState([]) */
     const [showModal, setShowModal] = useState(false);
@@ -56,19 +56,21 @@ export default function MenuWeb({categories, subCategories}) {
     )
 }
 
-function MenuCategories({categories, subCategories}) {
+function MenuCategories({ categories, subCategories }) {
     /* console.log(value);
     console.log(categories);
     console.log(notFound); */
     return (
         <Menu>
             {map(categories, (categories) => (
-
                 <Dropdown item text={categories.title} key={categories._id}>
                     <Dropdown.Menu>
+                        <Link href={`/${categories.url}`} key={categories.url} >
+                            <Dropdown.Item as="a">Todos los colchones</Dropdown.Item>
+                        </Link>
                         {map(subCategories, (subCategories) => (
                             subCategories.category._id == categories._id ?
-                                <Link href={`/${categories.url}/${subCategories.url}`} key={subCategories._id} >
+                                <Link href={`/${categories.url}/${subCategories.url}`} key={subCategories.url} >
                                     <Dropdown.Item as="a">{subCategories.title}</Dropdown.Item>
                                 </Link>
                                 : ""
