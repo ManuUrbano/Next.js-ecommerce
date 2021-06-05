@@ -14,7 +14,7 @@ export default function Colchones({ categories, subCategories }) {
     )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
     const categories = await getCategoriesApi();
     const subCategories = await getSubCategoriesApi();
 

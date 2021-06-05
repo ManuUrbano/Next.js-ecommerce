@@ -12,12 +12,9 @@ export default function ListProducts(props) {
     return (
         <div className="list-products">
             <Grid>
-                <div className="info_novedades">
-                    <Divider horizontal><p>Últimas Novedades</p></Divider>
-                </div>
                 <Grid.Row columns={2}>
                     {map(products, (product) => (
-                        <Product product={product} />
+                        <Product key={product._id} product={product} />
                     ))}
                 </Grid.Row>
             </Grid>
@@ -31,8 +28,8 @@ function Product(props) {
 
     return (
         <Grid.Column>
-            <Item.Group>
-                <Item>
+            <Item.Group> 
+                <Item >
                     <Item.Image size='small' as='a' src={product.image.url} alt={product.title} />
                     <Item.Content>
                         <Item.Header as='a'>{product.title}</Item.Header>

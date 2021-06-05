@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Loader } from "semantic-ui-react"
+import { Loader, Divider } from "semantic-ui-react"
 import { size } from 'lodash';
 import BasicLayout from "../layouts/BasicLayout";
 import { getLastProductsApi } from '../api/products';
@@ -28,21 +28,25 @@ export default function Home({ categories, subCategories }) {
         </div>
       )}
 
-      {size(products) > 0 && <ListProducts products={products} /> }
+      {size(products) > 0 && (
+        <div className="info_novedades">
+          <Divider horizontal><p>Últimas Novedades</p></Divider>
+          <ListProducts products={products} />
+        </div>)}
 
     </BasicLayout>
   )
 }
 
-export async function getStaticProps(){
+export async function getServerSideProps() {
   const categories = await getCategoriesApi();
   const subCategories = await getSubCategoriesApi();
 
   return {
-      props: {
-          categories,
-          subCategories
-      }
+    props: {
+      categories,
+      subCategories
+    }
   }
 
 }

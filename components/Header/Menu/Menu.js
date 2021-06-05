@@ -66,7 +66,7 @@ function MenuCategories({ categories, subCategories }) {
                 <Dropdown item text={categories.title} key={categories._id}>
                     <Dropdown.Menu>
                         <Link href={`/${categories.url}`} key={categories.url} >
-                            <Dropdown.Item as="a">Todos los colchones</Dropdown.Item>
+                            <Dropdown.Item as="a">Mostrar Todo</Dropdown.Item>
                         </Link>
                         {map(subCategories, (subCategories) => (
                             subCategories.category._id == categories._id ?
