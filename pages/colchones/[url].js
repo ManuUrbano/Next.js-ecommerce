@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from "next/router";
 import BasicLayout from "../../layouts/BasicLayout";
 import { getCategoriesApi, getSubCategoriesApi } from '../../api/categories';
@@ -9,8 +9,17 @@ import { size } from 'lodash';
 
 const limirPerPage = 10;
 
-export default function Colchones({ categories, subCategories, products }) {
+export default function Colchones({ categories, subCategories }) {
+    const [products, setProducts] = useState(null);
     const { query } = useRouter();
+
+    useEffect(() => {
+        (async () => {
+            const response = await getProductsCategoryApi(query.url,limirPerPage,0);;
+            if (size(response) > 0) setProducts(response);
+            else setProducts([]);
+        })()
+    }, [query])
 
     console.log(query);
     console.log(products);
@@ -24,21 +33,19 @@ export default function Colchones({ categories, subCategories, products }) {
                 </div>
             )}
             {size(products) > 0 && <ListProducts products={products} />}
-            
+
         </BasicLayout>
     )
 }
 
-export async function getServerSideProps({query}) {
+export async function getServerSideProps({ query }) {
     const categories = await getCategoriesApi();
     const subCategories = await getSubCategoriesApi();
-    const products = await getProductsCategoryApi(query.url,limirPerPage,0);
 
     return {
         props: {
             categories,
-            subCategories,
-            products
+            subCategories
         }
     }
 

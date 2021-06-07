@@ -28,11 +28,13 @@ function Product(props) {
 
     return (
         <Grid.Column>
-            <Item.Group> 
+            <Item.Group>
                 <Item >
-                    <Item.Image size='small' as='a' src={product.image.url} alt={product.title} />
+
+                    <Item.Image size='small' as='a' href={`/${product.url}`} src={product.image.url} alt={product.title} />
+
                     <Item.Content>
-                        <Item.Header as='a'>{product.title}</Item.Header>
+                        <Item.Header as='a' href={`/${product.url}`}>{product.title}</Item.Header>
                         <Item.Description>{product.shortSummary}</Item.Description>
                         <Item.Extra>
                             <span className='price'>{product.price}€</span>
@@ -41,10 +43,13 @@ function Product(props) {
                             ) : (
                                 ""
                             )}
-                            <Button primary floated='right'>Comprar<Icon name='right chevron' />
-                            </Button>
+                            <Link href={`/${product.url}`} key={product.url} >
+                                <Button primary floated='right'>Comprar<Icon name='right chevron' />
+                                </Button>
+                            </Link>
                         </Item.Extra>
                     </Item.Content>
+
                 </Item>
             </Item.Group>
         </Grid.Column>

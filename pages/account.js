@@ -93,7 +93,7 @@ function Addresses(){
     )
 }
 
-export async function getServerSideProps(){
+export async function getStaticProps(){
     const categories = await getCategoriesApi();
     const subCategories = await getSubCategoriesApi();
   

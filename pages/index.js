@@ -13,7 +13,7 @@ export default function Home({ categories, subCategories }) {
 
   useEffect(() => {
     (async () => {
-      const response = await getLastProductsApi(15);
+      const response = await getLastProductsApi(6);
       if (size(response) > 0) setProducts(response);
       else setProducts([]);
     })()
@@ -38,7 +38,7 @@ export default function Home({ categories, subCategories }) {
   )
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const categories = await getCategoriesApi();
   const subCategories = await getSubCategoriesApi();
 
