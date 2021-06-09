@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from 'react'
-import { Button, Grid, Icon, Image } from 'semantic-ui-react';
+import { Button, Grid, Icon } from 'semantic-ui-react';
 import CarouselScreenshots from '../CarouselScreenshots/CarouselScreenshots';
+import classNames from "classnames";
 import useAuth from "../../../hooks/useAuth";
-import { isFavoriteApi } from "../../../api/favorite";
+import { isFavoriteApi, AddFavoriteApi, DeleteFavoriteApi } from "../../../api/favorite";
+import { size } from 'lodash';
+
 
 export default function HeaderProduct(props) {
     const { product } = props;
     const { image, title, photos } = product;
 
-
     return (
         <Grid className="header-product">
             <Grid.Column mobile={16} tablet={6} computer={5} >
-{/*                 <Image src={image.url} alt={title} fluid />  */}
                 <CarouselScreenshots product={product} />
             </Grid.Column>
             <Grid.Column mobile={16} tablet={10} computer={11} >
@@ -27,20 +28,39 @@ export default function HeaderProduct(props) {
 function Info(props) {
     const { product } = props;
     const [isFavorite, setIsFavorite] = useState(false);
+    const [reloadFavories, setReloadFavories] = useState(false);
     const { auth, logout } = useAuth();
 
     useEffect(() => {
         (async () => {
             const response = await isFavoriteApi(auth.idUser, product.id, logout);
-            console.log(response);
+            if(size(response)> 0) setIsFavorite(true);
+            else setIsFavorite(false);
         })()
-    }, [])
+        setReloadFavories(false);
+    }, [product, reloadFavories])
+
+    const addFavorites = async () => {
+        if(auth){
+            await AddFavoriteApi(auth.idUser, product.id, logout)
+            setReloadFavories(true);
+        }
+    }
+
+    const deleteFavorites = async () => {
+        if(auth) {
+            await DeleteFavoriteApi(auth.idUser, product.id, logout)
+            setReloadFavories(true);
+        }
+    }
 
     return (
         <>
             <div className="header-product__title">
                 {product.title}
-                <Icon name="heart outline" />
+                <Icon name={isFavorite ? "heart" : "heart outline"} className={classNames({
+                    like: isFavorite,
+                })} link onClick={isFavorite ? deleteFavorites : addFavorites} />
             </div>
             <div className="header-product__delivery">
                 Entrega en 48/72h
