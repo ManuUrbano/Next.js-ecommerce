@@ -4,16 +4,17 @@ import BasicLayout from "../layouts/BasicLayout";
 import { getCategoriesApi, getSubCategoriesApi } from '../api/categories';
 import { getProductsByUrl } from '../api/products';
 import HeaderProduct from '../components/Products/HeaderProduct';
+import TabsProducts from '../components/Products/TabsProducts';
+import CarouselScreenshots from '../components/Products/CarouselScreenshots/CarouselScreenshots';
 
 
 export default function Product({ categories, subCategories, product }) {
     const { query } = useRouter(null);
-    console.log(product);
 
     return (
         <BasicLayout className="product"  categories={categories} subCategories={subCategories}>
             <HeaderProduct product={product}/>
-            <p>Tabs Game</p>
+            <TabsProducts product={product}/>
         </BasicLayout>
     )
 }
