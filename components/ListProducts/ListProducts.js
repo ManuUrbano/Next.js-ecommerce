@@ -7,7 +7,7 @@ import { map } from 'lodash';
 
 export default function ListProducts(props) {
     const { products } = props;
-
+    console.log(products);
 
     return (
         <div className="list-products">
@@ -25,7 +25,7 @@ export default function ListProducts(props) {
 
 function Product(props) {
     const { product } = props
-
+    console.log(product);
     return (
         <Grid.Column>
             <Item.Group>

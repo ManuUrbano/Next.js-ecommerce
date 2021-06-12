@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Container, Menu, Grid, Icon, Dropdown } from "semantic-ui-react";
+import { Container, Menu, Grid, Icon, Dropdown, Label } from "semantic-ui-react";
 import Link from "next/link";
 import { map } from "lodash";
 import BasicModal from "../../Modal/BasicModal";
 import Auth from "../../Auth";
 import useAuth from "../../../hooks/useAuth";
+import useCart from "../../../hooks/useCart";
 import { getMeApi } from "../../../api/user";
 import { getCategoriesApi, getSubCategoriesApi } from "../../../api/categories";
 
@@ -85,12 +86,19 @@ function MenuCategories({ categories, subCategories }) {
 
 function MenuOptions(props) {
     const { onShowModal, user, logout } = props;
+    const { productsCart } = useCart()
 
     return (
         /* Preguntamos si existe usuario para mostrar un menu u otro */
         <Menu>
             {user ? (
                 <>
+                    <Menu.Item as="a" className="m-0">
+                        <Icon name="cart" />
+                        <Label color="red" floating circular>
+                            {productsCart}
+                        </Label>
+                    </Menu.Item>
                     <Dropdown item text={user.name} >
                         <Dropdown.Menu>
                             <Dropdown.Item text='Edit Profile' text="Mi Cuenta" href="/account" />
