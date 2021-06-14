@@ -21,9 +21,6 @@ export default function Colchones({ categories, subCategories }) {
         })()
     }, [query])
 
-    console.log(query);
-    console.log(products);
-
     return (
         <BasicLayout className="colchones" categories={categories} subCategories={subCategories} >
             {!products && <Loader active>Cargando Productos!</Loader>}

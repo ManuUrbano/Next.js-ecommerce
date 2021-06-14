@@ -54,10 +54,10 @@ export default function MyApp({ Component, pageProps }) {
     }
   }
 
-  const addProduct = (product) => {
+  const addProduct = (title, url, image, medida, id, price) => {
     const token = getToken();
     if (token) {
-      addProductCart(product);
+      addProductCart(title, url, image, medida, id, price);
       setReloadCart(true);
     } else {
       toast.warning("Pirmero debes de estar logueado!")
@@ -77,7 +77,7 @@ export default function MyApp({ Component, pageProps }) {
   const cartData = useMemo(
     () => ({
       productsCart: totalProductsCart,
-      addProductCart: (product) => addProduct(product),
+      addProductCart: (title, url, image, medida, id, price) => addProduct(title, url, image, medida, id, price),
       getProductsCart: getProductsCart,
       removeProductCart: () => null,
       removeAllProductsCart: () => null,

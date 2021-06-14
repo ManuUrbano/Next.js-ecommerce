@@ -2,44 +2,55 @@ import { toast } from "react-toastify";
 import { size, includes, remove } from "lodash";
 import { BASE_PATH, CART } from "../utils/constants";
 
-export function getProductsCart(){
+export function getProductsCart() {
     const cart = localStorage.getItem(CART);
-    
-    if(!cart) {
+
+    if (!cart) {
         return null;
     } else {
-        const products = cart.split(",");
-        return products;
+        return cart;
     }
 
 }
 
-export function addProductCart(product){
-    const cart = getProductsCart();
+export function addProductCart(title, url, image, medida, id, price) {
+    let arrayCart = JSON.parse(localStorage.getItem(CART));
+    console.log(arrayCart);
+    const data = {
+        "title": title,
+        "url": url,
+        "image": image,
+        "medida": medida,
+        "id": id,
+        "price": price
+       
+    }
 
-    if(!cart) {
-        localStorage.setItem(CART, product);
+    if (arrayCart === null) {
+        arrayCart = [];
+        arrayCart.push(data);
+        let arrayCartJSON = JSON.stringify(arrayCart);
+        localStorage.setItem(CART, arrayCartJSON);
         toast.success("Producto añadido al carrito")
-    }else{
-        const productFound = includes(cart, product);
-        console.log(productFound);
-        if (productFound) {
+    } else {
+        if (arrayCart.some(e => e.title === title && e.medida === medida)) {
             toast.warning("Este producta ya esta en el carrito");
-        }else {
-            cart.push(product)
-            localStorage.setItem(CART, cart);
+        } else {
+            arrayCart.push(data);
+            let arrayCartJSON = JSON.stringify(arrayCart);
+            localStorage.setItem(CART, arrayCartJSON);
             toast.success("Producto añadido correctamente");
         }
     }
 
 }
 
-export function countProductsCart(){
-    const cart = getProductsCart();
-
-    if(!cart) {
+export function countProductsCart() {
+    const cart = JSON.parse(getProductsCart());
+    if (!cart) {
         return 0;
     } else {
-        return size(cart);
+        const cartCount = Object.keys(cart).length; 
+        return cartCount;
     }
 }

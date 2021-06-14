@@ -1,0 +1,35 @@
+.summary-cart {
+    padding: 10px;
+
+    .title {
+        width: max-content;
+        background-color: $background-dark-absolute;
+        color: $font-light;
+        padding: 5px 10px;
+        border-radius: 5px 5px 0 0;
+    }
+
+    .data {
+        background-color: $background-light;
+        box-shadow: 200px;
+        padding: 15px;
+
+    }
+
+    &__product {
+        td { 
+            text-align: center !important;
+
+            &:first-of-type {
+                display: flex !important;
+                align-items: center;
+
+                img {
+                    height: 100px;
+                    padding-right: 20px;
+                }
+            }
+        }
+    }
+
+}

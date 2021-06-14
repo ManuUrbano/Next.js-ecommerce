@@ -25,7 +25,7 @@ export default function ListProducts(props) {
 
 function Product(props) {
     const { product } = props
-    console.log(product);
+
     return (
         <Grid.Column>
             <Item.Group>

@@ -9,6 +9,8 @@
 @import "../pages/account.scss";
 @import "../pages/wishlist.scss";
 @import "../pages/search.scss";
+@import "../pages/cart.scss";
+
 
 //Components
 @import "../components/Header/Header.scss";
@@ -25,3 +27,4 @@
 @import "../components/Products/HeaderProduct/HeaderProduct.scss";
 @import "../components/Products/TabsProducts/TabsProducts.scss";
 @import "../components/Products/CarouselScreenshots/CarouselScreenshots.scss";
+@import "../components/Cart/SummaryCart/SummaryCart.scss";

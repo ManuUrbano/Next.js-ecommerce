@@ -34,12 +34,14 @@ function Info(props) {
     const { auth, logout } = useAuth();
     const { addProductCart } = useCart();
     const [medida, setMedida] = useState("");
-    console.log(product);
-
     const arrayOpciones = [];
 
+    var id;
+    var price;
+    console.log(product);
     map(product.products_details, (detail) => (
         arrayOpciones.push({
+            id: detail._id,
             value: detail.size,
             text: detail.size,
             key: detail._id,
@@ -48,9 +50,7 @@ function Info(props) {
         })
     ))
 
-
     console.log(arrayOpciones);
-
     useEffect(() => {
         (async () => {
             const response = await isFavoriteApi(auth.idUser, product.id, logout);
@@ -82,42 +82,41 @@ function Info(props) {
                     like: isFavorite,
                 })} link onClick={isFavorite ? deleteFavorites : addFavorites} />
             </div>
+
             <div className="header-product__delivery">
                 Entrega en 48/72h
             </div>
+
             <div className="header-product__sumary" dangerouslySetInnerHTML={{ __html: product.summary }} />
+
             <div className="header-product__buy">
                 <div className="header-product__buy-price">
                     <Dropdown placeholder="Selecciona una medida" fluid search selection options={arrayOpciones} onChange={(_, data) => setMedida(data.value)} />
                     <div className="header-product__buy-price-actions">
                         {arrayOpciones.map((opc, index) => {
-
                             if (opc.value === medida && opc.discount != undefined) {
+                                id = opc.id;
+                                price = (opc.price - Math.floor(opc.price * opc.discount) / 100).toFixed(2)
                                 return (
                                     <>
                                         <p> {opc.price}€ </p>
-                                           <h3>{opc.discount}%</h3> 
-                                            <p>{(opc.price - Math.floor(opc.price * opc.discount) / 100).toFixed(2)}€</p>
+                                        <h3>{opc.discount}%</h3>
+                                        <h1>{price}€</h1>
                                     </>
+
                                 )
                             }
 
                             if (opc.value === medida) {
-                                return <p>{opc.price}€</p>
+                                id = opc.id;
+                                price = opc.price
+                                return <p>{price}€</p>
                             }
                         })}
-
-                        {/* {(() => {
-                            {map(arrayOpciones, (opc) => (
-                                return opc.value && (<p>sda</p>)
-                            ))}
-                        })} */}
-
-                        {/* <p>{product.discount}%</p>
-                        <p>{(product.products_details[0].price - Math.floor(product.products_details[0].price * product.discount) / 100).toFixed(2)}€</p> */}
                     </div>
+
                 </div>
-                <Button className="header-product__buy-btn" onClick={() => addProductCart(product.url)} >Comprar</Button>
+                <Button className="header-product__buy-btn" onClick={() => addProductCart(product.title ,product.url,product.image.url, medida, id, price)} >Comprar</Button>
             </div>
         </>
     )
