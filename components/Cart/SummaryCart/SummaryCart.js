@@ -1,12 +1,26 @@
 import React, { useState, useEffect } from 'react'
-import { map } from 'lodash';
+import { forEach, map } from 'lodash';
 import { Table, Image, Icon } from 'semantic-ui-react'
 import useCart from "../../../hooks/useCart";
 
 
-export default function SummaryCart({ products }) {
-    const { getProductsCart } = useCart();
+export default function SummaryCart({ reloadCart, setReloadCart}) {
+    const [totalPrice, setTotalPrice] = useState(0)
+    const { getProductsCart, removeProductCart } = useCart();
     const proLocal = JSON.parse(getProductsCart());
+
+    useEffect(() => {
+        let price = 0;
+        forEach(proLocal, (product) =>{
+            price += parseInt(product.price)
+        })
+        setTotalPrice(price);
+    }, [reloadCart])
+
+    const removeProduct = (product) => {
+        removeProductCart(product);
+        setReloadCart(true);
+    }
 
     return (
         <div className="summary-cart">
@@ -26,7 +40,7 @@ export default function SummaryCart({ products }) {
                         {proLocal && proLocal.map(pr => (
                             <Table.Row key={Math.random(pr.id)} className="summary-cart__product" >
                                 <Table.Cell>
-                                    <Icon name="close" link onClick={() => console.log("Borrar")} />
+                                    <Icon name="close" link onClick={() => removeProduct(pr.id)} />
                                     <Image src={pr.image} alt={pr.title} />
                                     {pr.title}
                                 </Table.Cell>
@@ -45,7 +59,11 @@ export default function SummaryCart({ products }) {
 
                             </Table.Row>
                         ))}
-
+                        <Table.Row className="summary-cart__resume">
+                            <Table.Cell className="clear" /> 
+                            <Table.Cell colSpan="2">Total:</Table.Cell> 
+                            <Table.Cell className="total-price">{totalPrice}€</Table.Cell> 
+                        </Table.Row>
                     </Table.Body>
                 </Table>
             </div>
