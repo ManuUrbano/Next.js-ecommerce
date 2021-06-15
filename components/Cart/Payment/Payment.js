@@ -6,15 +6,14 @@ import FormPayment from './FormPayment';
 
 const stripePromise = loadStripe(STRIPE_TOKEN);
 
-export default function Payment({ products , address}) {
-    console.log(products);
+export default function Payment({ address }) {
 
     return (
         <div className="payment">
             <div className="title">Pago</div>
             <div className="data">
                 <Elements stripe={stripePromise}>
-                    <FormPayment products={products} address={address} />
+                    <FormPayment address={address} />
                 </Elements>
             </div>
         </div>
