@@ -44,7 +44,7 @@ export default function MenuWeb({ categories, subCategories }) {
                     <Grid.Column className="menu__left" width={10}>
                         <MenuCategories categories={categories} subCategories={subCategories} />
                     </Grid.Column>
-                    <Grid.Column className="menu__right" width={5}>
+                    <Grid.Column className="menu__right" width={6}>
                         {user !== undefined && <MenuOptions onShowModal={onShowModal} user={user} logout={logout} />}
                     </Grid.Column>
                 </Grid>

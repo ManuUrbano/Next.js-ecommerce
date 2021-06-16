@@ -3,7 +3,7 @@
     border-radius: 0;
 
     .ui.grid {
-        margin: 0;
+        margin: 0 !important;
     }
 
     &__left,
@@ -13,13 +13,13 @@
         align-items: center;
 
         .ui.menu {
+            padding: 100 !important;
             border: 0;
             box-shadow: none;
             height: 100%;
             background: transparent;
     
             .icon {
-                margin-right: 10px !important;
                 color: $primary;
             }
     
