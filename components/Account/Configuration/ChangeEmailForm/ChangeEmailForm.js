@@ -3,7 +3,7 @@ import { Form, Button } from "semantic-ui-react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { toast } from "react-toastify";
-import { updateEmailApi } from '../../../api/user';
+import { updateEmailApi } from '../../../../api/user';
 
 export default function ChangeEmailForm(props) {
     const { user, logout, setReloadUser} = props;

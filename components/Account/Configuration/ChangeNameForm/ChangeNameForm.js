@@ -3,7 +3,7 @@ import { Form, Button } from "semantic-ui-react"
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { toast } from "react-toastify";
-import { updateNameApi } from "../../../api/user";
+import { updateNameApi } from "../../../../api/user";
 
 export default function ChangeNameForm(props) {
     const { user, logout, setReloadUser } = props;

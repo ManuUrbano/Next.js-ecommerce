@@ -25,8 +25,7 @@ function EmptyCart({ categories, subCategories }) {
     )
 }
 
-function FullCart({ categories, subCategories }) {
-    const [productsData, setProductsData] = useState(null)
+function FullCart({ categories, subCategories, products }) {
     const [reloadCart, setReloadCart] = useState(false);
     const [address, setAddress] = useState(null)
     
@@ -35,7 +34,7 @@ function FullCart({ categories, subCategories }) {
         <BasicLayout className="full-cart" categories={categories} subCategories={subCategories}>
             <SummaryCart reloadCart={reloadCart} setReloadCart={setReloadCart} />
             <AddressShiping setAddress={setAddress} />
-            {address && <Payment products={productsData} address={address} />}
+            {address && <Payment products={products} address={address} />}
         </BasicLayout>
     )
 }

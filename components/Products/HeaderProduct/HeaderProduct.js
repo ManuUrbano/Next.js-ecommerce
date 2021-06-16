@@ -96,12 +96,13 @@ function Info(props) {
                         {arrayOpciones.map((opc, index) => {
                             if (opc.value === medida && opc.discount != undefined) {
                                 id = opc.id;
-                                price = (opc.price - Math.floor(opc.price * opc.discount) / 100).toFixed(2)
+                                price = (opc.price - Math.floor(opc.price * opc.discount) / 100)
+                                console.log(price);
                                 return (
                                     <>
                                         <p> {opc.price}€ </p>
                                         <h3>{opc.discount}%</h3>
-                                        <h1>{price}€</h1>
+                                        <h1>{price.toFixed(2)}€</h1>      
                                     </>
 
                                 )

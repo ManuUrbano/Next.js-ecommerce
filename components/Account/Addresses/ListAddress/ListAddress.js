@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { DeleteAddressesApi, getAddressesApi } from '../../../api/address';
-import useAuth from "../../../hooks/useAuth";
+import { DeleteAddressesApi, getAddressesApi } from '../../../../api/address';
+import useAuth from "../../../../hooks/useAuth";
 import { map, size } from 'lodash';
 import { Button, Grid, Loader } from 'semantic-ui-react';
 
