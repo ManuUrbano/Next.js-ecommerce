@@ -10,6 +10,7 @@ export default function AddressesTab(){
     const [formModal, setformModal] = useState(null);
     const [reloadAddresses, setReloadAddresses] = useState(false);
 
+    //Abrimos Modal
     const openModal = (title, address) => {
         settitleModal(title);
         setformModal(<AddressForm setshowModal={setshowModal} setReloadAddresses={setReloadAddresses} newAddress={address ? false : true} address={address || null} />)

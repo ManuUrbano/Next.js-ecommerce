@@ -1,5 +1,6 @@
 import { BASE_PATH } from "../utils/constants";
 
+//Metodo para conseguir todos los productos
 export async function getProductsApi(){
     try {
         const url = `${BASE_PATH}/products?`;
@@ -12,6 +13,7 @@ export async function getProductsApi(){
     }
 }
 
+//Metodos para conseguir los productos en orden descendente
 export async function getLastProductsApi(limit){
     try {
         const limitItems = `_limit=${limit}`
@@ -26,6 +28,7 @@ export async function getLastProductsApi(limit){
     }
 }
 
+//Conseguir productos por categorias
 export async function getProductsCategoryApi(category, limit, start){
     try {
         const limitItems = `_limit=${limit}`
@@ -41,6 +44,7 @@ export async function getProductsCategoryApi(category, limit, start){
     }
 }
 
+//Meotodo para conseguir productos por la URL
 export async function getProductsByUrl(path){
     try {
         const url = `${BASE_PATH}/products?url=${path}`;
@@ -53,6 +57,7 @@ export async function getProductsByUrl(path){
     }
 }
 
+//Meotod para buscar por el titulo
 export async function searchProductsApi(title){
     try {
         const url = `${BASE_PATH}/products?_q=${title}`;
@@ -65,7 +70,21 @@ export async function searchProductsApi(title){
     }
 }
 
+//Metodo para conseguir por la id
 export async function getProductsById(id){
+    try {
+        const url = `${BASE_PATH}/products?id=${id}`;
+        const response = await fetch(url);
+        const result = await response.json();
+        return result[0];
+    } catch (error) {
+        console.log(error);
+        return null;
+    }
+}
+
+
+export async function getTotalProductsCategories(categories){
     try {
         const url = `${BASE_PATH}/products?id=${id}`;
         const response = await fetch(url);

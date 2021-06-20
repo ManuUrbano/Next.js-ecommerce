@@ -1,6 +1,7 @@
 import { BASE_PATH } from "../utils/constants";
 import { authFetch } from "../utils/fetch";
- 
+//Todos los metodos de API para el usuario 
+
 export async function registerApi(formData){
     try{
         const url = `${BASE_PATH}/auth/local/register`;
