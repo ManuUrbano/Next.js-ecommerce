@@ -2,6 +2,7 @@ import React from 'react';
 import { useRouter } from "next/router";
 import BasicLayout from "../../layouts/BasicLayout";
 import { getCategoriesApi, getSubCategoriesApi } from '../../api/categories';
+import Seo from "../../components/Seo";
 
 export default function Colchones({ categories, subCategories }) {
     const { query } = useRouter();
@@ -9,6 +10,7 @@ export default function Colchones({ categories, subCategories }) {
     console.log(subCategories);
     return (
         <BasicLayout className="colchones" categories={categories} subCategories={subCategories} >
+            <Seo title="Colchones" />
             <h1>Estamos en colchones!</h1>
         </BasicLayout>
     )

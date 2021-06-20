@@ -38,7 +38,7 @@
     }
 
     &__sumary {
-        background-color: $background-light;
+       /*  background-color: $background-light; */
         
     }
 
@@ -50,34 +50,44 @@
         color: $font-light;
         padding: 15px 20px;
         margin-top: 15px;
+        height: 50%;
+
 
         &-price {
             display: flex;
             flex-direction: column;
-
-            > p{
-                text-align: center;
-                color: $font-grey;
-                margin: 0;
-            }
+            width: 40%;
 
             &-actions {
                 display: flex;
+                flex-direction: column;
                 justify-content: space-between;
-                align-items: baseline;
 
-                > p{
-                    margin: 0;
+                .price {
+                    font-size: 22px;
+                    margin: 10px 0 0 0px !important;
+                }
+
+                .discount {
+                    font-size: 20PX;
+                    text-align: center;
                     font-weight: bold;
+                    margin: 10px 0 0 0px !important;
+                    color: $primary;
+                }
 
-                    &:first-of-type{
-                        font-size: 25px;
-                    }
+                .price-old {
+                    text-decoration: line-through;
+                    font-size: 15px;
+                    font-weight: normal;
+                }
 
-                    &:last-of-type{
-                        font-size: 40px;
-                        color: $primary;
-                    }
+                .price-normal{
+                    font-size: 32px;
+                    margin: 10px 0 0 0px !important;
+                    color: $primary;
+                    text-align: center;
+                    font-weight: bold;
                 }
             }
         }

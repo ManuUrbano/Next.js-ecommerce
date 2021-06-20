@@ -21,6 +21,25 @@
         transform: translate(-50%, -50%);
         position: absolute; */
         
+        .extra {
+            display: flex !important;
+            flex-direction: column !important;
+            text-align: center;
+
+            button {
+                margin-left: 50px;
+            }
+        }
+
+        .price {
+            color: $primary;
+            font-size: 17px;
+        }
+
+        .discount {
+            color: $font-grey;
+            font-size: 20px;
+        }
     }
 
     .header {

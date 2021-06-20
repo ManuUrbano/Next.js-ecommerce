@@ -9,7 +9,7 @@ export default function OrderList(props) {
     return (
         <Grid>
             {map(ordersData, (ord) => (
-                <Grid.Column mobile={16} tablet={8} computer={8}>
+                <Grid.Column mobile={16} tablet={8} computer={8} key={ord.id}>
                     <OrderCard ord={ord} />
                 </Grid.Column>
             ))}

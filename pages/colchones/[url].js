@@ -6,6 +6,7 @@ import { getProductsCategoryApi } from '../../api/products';
 import ListProducts from '../../components/ListProducts/ListProducts';
 import { Loader } from 'semantic-ui-react';
 import { size } from 'lodash';
+import Seo from "../../components/Seo";
 
 const limirPerPage = 10;
 
@@ -23,6 +24,7 @@ export default function Colchones({ categories, subCategories }) {
 
     return (
         <BasicLayout className="colchones" categories={categories} subCategories={subCategories} >
+            <Seo title="Colchones" />
             {!products && <Loader active>Cargando Productos!</Loader>}
             {products && size(products) === 0 && (
                 <div>

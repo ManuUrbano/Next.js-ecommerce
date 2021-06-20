@@ -6,6 +6,7 @@ import BasicLayout from "../layouts/BasicLayout";
 import { searchProductsApi } from "../api/products";
 import ListProducts from '../components/ListProducts';
 import { getCategoriesApi, getSubCategoriesApi } from '../api/categories';
+import Seo from "../components/Seo";
 
 
 export default function search({ categories, subCategories }) {
@@ -32,6 +33,7 @@ export default function search({ categories, subCategories }) {
     return (
         <div>
             <BasicLayout className="search" categories={categories} subCategories={subCategories}>
+                <Seo title={`Buscando: ${query.query}`} />
                 {!products && <Loader active>Buscando Resultados!</Loader>}
                 {products && size(products) === 0 && (
                     <div>

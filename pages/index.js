@@ -5,6 +5,7 @@ import BasicLayout from "../layouts/BasicLayout";
 import { getLastProductsApi } from '../api/products';
 import ListProducts from '../components/ListProducts';
 import { getCategoriesApi, getSubCategoriesApi } from '../api/categories';
+import Seo from "../components/Seo";
 
 
 
@@ -21,6 +22,7 @@ export default function Home({ categories, subCategories }) {
 
   return (
     <BasicLayout className="home" categories={categories} subCategories={subCategories} >
+      <Seo /> 
       {!products && <Loader active>Cargando los productos!</Loader>}
       {products && products === 0 && (
         <div>

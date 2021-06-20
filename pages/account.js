@@ -10,6 +10,7 @@ import { getProductsById } from '../api/products';
 import OrdersTab from "../components/Account/Orders/OrdersTab";
 import ConfigTab from "../components/Account/Configuration/ConfigTab";
 import AddressesTab from "../components/Account/Addresses/AddressesTab/AddressesTab";
+import Seo from "../components/Seo";
 
 export default function account({ categories, subCategories }) {
     const [user, setUser] = useState(undefined);
@@ -61,6 +62,7 @@ export default function account({ categories, subCategories }) {
 
     return (
         <BasicLayout className="account" categories={categories} subCategories={subCategories}>
+            <Seo title="Mi cuenta" desciprtion="Ajustes de tu cuenta"/>
             <TabExampleBasic />
         </BasicLayout>
     )

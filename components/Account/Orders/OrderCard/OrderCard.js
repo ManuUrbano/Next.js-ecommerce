@@ -11,6 +11,7 @@ export default function OrderCard(props) {
     const { ord, productID } = props;
     const { totalPayment, products_details, createdAt, addressShipping } = ord;
     const [orderProduct, setOrderProduct] = useState(null);
+    const [showModal, setShowModal] = useState(false)
 
     useEffect(() => {
         (async () => {
@@ -24,13 +25,14 @@ export default function OrderCard(props) {
         })()
     }, [])
 
-    console.log(ord);
+    if (!orderProduct) {
+        return null;
+    }
 
     return (
-        <div className="order">
-            <div className="order__info">
-                {size(orderProduct) > 0 && (
-                    <>
+        <>
+            <div className="order">
+                <div className="order__info">
                         <div className="order__info-data">
                             <Link href={`/${orderProduct.url}`}>
                                 <a>
@@ -46,12 +48,30 @@ export default function OrderCard(props) {
                             <p className="order__other-date">
                                 {moment(createdAt).format("L")} - {moment(createdAt).format("LT")}
                             </p>
-                            <Icon name="eye" circular link />
+                            <Icon name="eye" circular link onClick={() => setShowModal(true)} />
                         </div>
-                    </>
-                )}
+                </div>
             </div>
-        </div>
+            <AddressModal showModal={showModal} setShowModal={setShowModal} addressShipping={addressShipping} title={orderProduct.title} />
+        </>
+    )
+}
 
+function AddressModal(props) {
+    const { showModal, setShowModal, addressShipping, title } = props;
+
+    return (
+        <BasicModal show={showModal} setShow={setShowModal} size="tiny" title={title}>
+            <h3>El pedido se ha enviado a la siguiente direccioón: </h3>
+            <div>
+                <p>{addressShipping.name}</p>
+                <p>{addressShipping.address}</p>
+                <p>
+                    {addressShipping.state}, {addressShipping.city},
+                    {addressShipping.postalCode}
+                </p>  
+                <p>{addressShipping.phone}</p>
+            </div>
+        </BasicModal>
     )
 }

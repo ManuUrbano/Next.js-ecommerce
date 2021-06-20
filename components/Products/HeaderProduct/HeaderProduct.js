@@ -100,9 +100,8 @@ function Info(props) {
                                 console.log(price);
                                 return (
                                     <>
-                                        <p> {opc.price}€ </p>
-                                        <h3>{opc.discount}%</h3>
-                                        <h1>{price.toFixed(2)}€</h1>      
+                                        <p className="discount">{opc.discount}% de DESCUENTO!</p> 
+                                        <h1 className="price"> <span className="price-old">ANTES: {opc.price}€</span> AHORA: {price.toFixed(2)}€</h1>
                                     </>
 
                                 )
@@ -111,13 +110,13 @@ function Info(props) {
                             if (opc.value === medida) {
                                 id = opc.id;
                                 price = opc.price
-                                return <p>{price}€</p>
+                                return <p className="price-normal">{price}€</p>
                             }
                         })}
                     </div>
 
                 </div>
-                <Button className="header-product__buy-btn" onClick={() => addProductCart(product.title ,product.url,product.image.url, medida, id, price)} >Comprar</Button>
+                <Button className="header-product__buy-btn" onClick={() => addProductCart(product.title, product.url, product.image.url, medida, id, price)} >Comprar</Button>
             </div>
         </>
     )

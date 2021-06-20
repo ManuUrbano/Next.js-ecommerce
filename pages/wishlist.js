@@ -6,6 +6,7 @@ import { getCategoriesApi, getSubCategoriesApi } from '../api/categories';
 import { GetFavoriteApi } from '../api/favorite';
 import useAuth from "../hooks/useAuth";
 import ListProducts from "../components/ListProducts";
+import Seo from "../components/Seo";
 
 
 
@@ -33,6 +34,7 @@ export default function wishlist({ categories, subCategories }) {
 
     return (
         <BasicLayout className="wishlist" categories={categories} subCategories={subCategories}>
+            <Seo title="Mis favoritos" />
             <div className="wishlist__block">
                 <div className="title">Productos deseados!</div>
 

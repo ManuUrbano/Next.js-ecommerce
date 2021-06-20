@@ -6,6 +6,7 @@ import { getProductsByUrl } from '../api/products';
 import HeaderProduct from '../components/Products/HeaderProduct';
 import TabsProducts from '../components/Products/TabsProducts';
 import CarouselScreenshots from '../components/Products/CarouselScreenshots/CarouselScreenshots';
+import Seo from "../components/Seo";
 
 
 export default function Product({ categories, subCategories, product }) {
@@ -13,6 +14,7 @@ export default function Product({ categories, subCategories, product }) {
 
     return (
         <BasicLayout className="product"  categories={categories} subCategories={subCategories}>
+            <Seo title={product.title} />
             <HeaderProduct product={product}/>
             <TabsProducts product={product}/>
         </BasicLayout>

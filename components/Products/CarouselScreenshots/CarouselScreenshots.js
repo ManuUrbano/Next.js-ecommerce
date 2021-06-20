@@ -16,7 +16,7 @@ export default function CarouselScreenshots(props) {
     const { product, title } = props;
     const [showModal, setShowModal] = useState(false);
     const [urlImage, setUrlImage] = useState(null);
-
+    console.log(product);
     const openImage = (url) => {
         setUrlImage(url);
         setShowModal(true);

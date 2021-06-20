@@ -37,16 +37,19 @@ function Product(props) {
                         <Item.Header as='a' href={`/${product.url}`}>{product.title}</Item.Header>
                         <Item.Description>{product.shortSummary}</Item.Description>
                         <Item.Extra>
-                            <span className='price'>{product.price}€</span>
                             {product.discount ? (
                                 <span className='discount'>{product.discount}% DESCUENTO!</span>
                             ) : (
                                 ""
                             )}
+                            <span className='price'>{product.price}€</span>
                             <Link href={`/${product.url}`} key={product.url} >
-                                <Button primary floated='right'>Comprar<Icon name='right chevron' />
+                                <Button primary >Comprar<Icon name='right chevron' />
                                 </Button>
                             </Link>
+
+
+
                         </Item.Extra>
                     </Item.Content>
 
