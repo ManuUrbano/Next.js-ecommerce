@@ -16,7 +16,7 @@ export default function Colchones({ categories, subCategories }) {
 
     useEffect(() => {
         (async () => {
-            const response = await getProductsHomeCategoryApi("sabanas",limirPerPage,0);;
+            const response = await getProductsHomeCategoryApi("fundas-de-sofa",limirPerPage,0);;
             console.log(response);
             if (size(response) > 0) setProducts(response);
             else setProducts([]);

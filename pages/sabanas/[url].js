@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from "next/router";
-import { Loader } from 'semantic-ui-react';
-import { size } from 'lodash';
 import BasicLayout from "../../layouts/BasicLayout";
 import { getCategoriesApi, getSubCategoriesApi } from '../../api/categories';
-import { getProductsHomeCategoryApi } from '../../api/products';
+import { getProductsCategoryApi } from '../../api/products';
 import ListProducts from '../../components/ListProducts/ListProducts';
+import { Loader } from 'semantic-ui-react';
+import { size } from 'lodash';
 import Seo from "../../components/Seo";
 
 const limirPerPage = 10;
@@ -16,16 +16,15 @@ export default function Colchones({ categories, subCategories }) {
 
     useEffect(() => {
         (async () => {
-            const response = await getProductsHomeCategoryApi("sabanas",limirPerPage,0);;
-            console.log(response);
+            const response = await getProductsCategoryApi(query.url,limirPerPage,0);;
             if (size(response) > 0) setProducts(response);
             else setProducts([]);
         })()
     }, [query])
 
     return (
-        <BasicLayout className="colchones" categories={categories} subCategories={subCategories} >
-            <Seo title="Colchones" />
+        <BasicLayout className="sabanas" categories={categories} subCategories={subCategories} >
+            <Seo title="Sabanas" />
             {!products && <Loader active>Cargando Productos!</Loader>}
             {products && size(products) === 0 && (
                 <div>
@@ -33,11 +32,12 @@ export default function Colchones({ categories, subCategories }) {
                 </div>
             )}
             {size(products) > 0 && <ListProducts products={products} />}
+
         </BasicLayout>
     )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps({ query }) {
     const categories = await getCategoriesApi();
     const subCategories = await getSubCategoriesApi();
 
@@ -49,3 +49,4 @@ export async function getStaticProps() {
     }
 
 }
+

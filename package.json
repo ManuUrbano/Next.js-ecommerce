@@ -26,5 +26,9 @@
     "semantic-ui-react": "^2.0.3",
     "slick-carousel": "^1.8.1",
     "yup": "^0.32.9"
-  }
+  },
+  "main": "index.js",
+  "repository": "https://github.com/ManuUrbano/Next.js-ecommerce-.git",
+  "author": "ManuUrbano <jmanuurbano@gmail.com>",
+  "license": "MIT"
 }
