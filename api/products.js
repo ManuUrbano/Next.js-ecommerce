@@ -102,10 +102,10 @@ export async function getProductsById(id){
 
 export async function getTotalProductsCategories(categories){
     try {
-        const url = `${BASE_PATH}/products?id=${id}`;
+        const url = `${BASE_PATH}/products/count?category.url=${categories}`;
         const response = await fetch(url);
         const result = await response.json();
-        return result[0];
+        return result;
     } catch (error) {
         console.log(error);
         return null;

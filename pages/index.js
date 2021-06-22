@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { Loader, Divider } from "semantic-ui-react"
 import { size } from 'lodash';
+import { useRouter } from "next/router";
 import BasicLayout from "../layouts/BasicLayout";
-import { getLastProductsApi } from '../api/products';
+import { getLastProductsApi, getTotalProductsCategories } from '../api/products';
 import ListProducts from '../components/ListProducts';
 import { getCategoriesApi, getSubCategoriesApi } from '../api/categories';
 import Seo from "../components/Seo";
 
-
-
 export default function Home({ categories, subCategories }) {
+  const { query } = useRouter(null);
   const [products, setProducts] = useState(null)
+
 
   useEffect(() => {
     (async () => {
@@ -19,6 +20,7 @@ export default function Home({ categories, subCategories }) {
       else setProducts([]);
     })()
   }, [])
+
 
   return (
     <BasicLayout className="home" categories={categories} subCategories={subCategories} >

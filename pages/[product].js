@@ -3,11 +3,9 @@ import { useRouter } from "next/router";
 import { size } from 'lodash';
 import BasicLayout from "../layouts/BasicLayout";
 import { getCategoriesApi, getSubCategoriesApi } from '../api/categories';
-import { getProductsByUrl } from '../api/products';
-import { getLastProductsApi } from '../api/products';
+import { getProductsByUrl, getLastProductsApi } from '../api/products';
 import HeaderProduct from '../components/Products/HeaderProduct';
 import TabsProducts from '../components/Products/TabsProducts';
-import ListProducts from '../components/ListProducts/ListProducts';
 import Seo from "../components/Seo";
 
 
@@ -23,6 +21,7 @@ export default function Product({ categories, subCategories, product }) {
         })()
       }, [])
 
+      
 
     return (
         <BasicLayout className="product"  categories={categories} subCategories={subCategories}>

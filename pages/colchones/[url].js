@@ -13,10 +13,10 @@ const limirPerPage = 10;
 export default function Colchones({ categories, subCategories }) {
     const [products, setProducts] = useState(null);
     const { query } = useRouter();
-
+   
     useEffect(() => {
         (async () => {
-            const response = await getProductsCategoryApi(query.url,limirPerPage,0);;
+            const response = await getProductsCategoryApi(query.url, limirPerPage, 0);;
             if (size(response) > 0) setProducts(response);
             else setProducts([]);
         })()
