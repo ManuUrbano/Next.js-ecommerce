@@ -1,15 +1,16 @@
 import React from 'react'
 import { Tab } from 'semantic-ui-react';
+import ListProducts from '../../ListProducts';
 
 export default function TabsProducts(props) {
-    const { product } = props;
+    const { products } = props;
 
     const panes = [
         {
-            menuItem: "Información",
+            menuItem: "Prudctos relacionados",
             render: () => (
                 <Tab.Pane>
-                    <h1>Info</h1>
+                    <ListProducts products={products}/>
                 </Tab.Pane>
             )
         }
